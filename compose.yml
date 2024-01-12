@@ -1,0 +1,22 @@
+services:
+  # ---------- Databases ----------
+  mongodb-chat:
+    extends:
+      file: common.yml
+      service: base-mongo
+    container_name: mongodb-chat
+    ports:
+      # use PORT 27018 to avoid conflicts with local mongodb instances
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./container-volumes/db-customer/:/data/db
+    networks:
+      - db_net
+
+# ---------- Networks ----------
+networks:
+  db_net:
+    driver: bridge

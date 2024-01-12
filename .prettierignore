@@ -1,0 +1,9 @@
+yarn.lock
+package-lock.json
+node_modules
+.next
+public
+storybook-static
+*.scss
+.git
+yarn-error.log
